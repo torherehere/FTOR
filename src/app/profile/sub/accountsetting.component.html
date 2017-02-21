@@ -1,0 +1,24 @@
+<div class="profile_form fade_in">
+  <h1 class="head_form">Account Setting</h1>
+  <div class="form">
+      <div class="form-group">
+          <label for="usr"><font color="red">*&nbsp;</font>E-mail</label>
+          <input placeholder="E-mail" type="text" class="form-control" id="usr" [(ngModel)]="email" *ngIf="session_id != uid && permission != 0" readonly>
+          <input placeholder="E-mail" type="text" class="form-control" id="usr" [(ngModel)]="email" *ngIf="session_id == uid || permission == 0">
+      </div>
+      <div class="form-group">
+          <label for="pwd"><font color="red">*&nbsp;</font>Password</label>
+          <input placeholder="Password" type="password" class="form-control" id="pwd" [(ngModel)]="password" *ngIf="session_id != uid && permission != 0" readonly>
+          <input placeholder="Password" type="password" class="form-control" id="pwd" [(ngModel)]="password" *ngIf="session_id == uid || permission == 0">
+      </div>
+      <div class="form-group">
+          <label for="pwd"><font color="red">*&nbsp;</font>Retype Password</label>
+          <input placeholder="Confirm Password" type="password" class="form-control" id="pwd" [(ngModel)]="confirm_password" *ngIf="session_id != uid && permission != 0" readonly>
+          <input placeholder="Confirm Password" type="password" class="form-control" id="pwd" [(ngModel)]="confirm_password" *ngIf="session_id == uid || permission == 0">
+      </div>
+  </div>
+  <div class="action_of_form">      
+      <span>{{response}}</span> 
+      <button type="button" class="btn blue" (click)="submit()"  *ngIf="session_id == uid || permission == 0"> SAVE </button>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+.btn {
+    @include setfontstyle(Text_2, 18px, $color_text_title_2); 
+    text-transform: capitalize;
+    background: #eee;
+    border-radius: 4px;
+    width: 140px;
+    height: 36px;
+    color: #FFFFFF;
+    margin-right: $space_element;
+    float: right;
+    border: none;
+}
+
+.btn {
+    i.icon {
+        overflow: hidden;
+        width: 12px;
+        height: 12px;
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+}
+
+.btn.select {
+    text-overflow: ellipsis;
+    color: $color_text_title_2;
+    option {
+        text-overflow: ellipsis;
+    }
+}
+
+.btn.black {
+    background: $color_btn_black !important;
+}
+.btn.blue {
+    background: $color_btn_blue !important;
+}
+.btn.green {
+    background: $color_btn_green !important;
+}

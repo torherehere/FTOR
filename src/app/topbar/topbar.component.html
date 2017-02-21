@@ -1,0 +1,21 @@
+<div *ngIf="svset?.getVisibility() == true" class="topbar fade_in">
+  <div class="current_page_title">
+    {{svset?.gettitle()}}
+  </div>
+  <div class="user_title">
+    <div class="avatar_img" routerLink="/profile/{{uid}}/timeline">
+      <img src="../assets/images/Avatar.png">
+    </div>
+    <div class="avatar_detail">
+      <span class="name">{{fullname}}</span>
+      <span class="hole">{{position}}</span>
+    </div>
+    <div class="dropdown show">
+      <a id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="avatar_menu dropdown-toggle"><div>&#10176;</div></a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <div class="dropdown-item" href="javascript:void(0)" (click)="logout()">&nbsp;&nbsp;Logout</div>
+        <div class="dropdown-item" href="javascript:void(0)" routerLink="/profile/{{uid}}/accountsetting">&nbsp;&nbsp;Setting Account</div>
+      </div>
+    </div>
+  </div>
+</div>

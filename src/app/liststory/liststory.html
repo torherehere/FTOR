@@ -1,0 +1,86 @@
+<h1>{{title}}</h1> 
+<span *ngFor="let row of dataBlog">
+    <div [innerHTML]="row.description | safeHtml"></div> 
+</span> 
+
+<p>Catalog: {{ catalog_name }}</p>
+<p>Date: {{ dateTime | date: 'dd/MM/yyyy' }}</p>
+Tags: <span *ngFor="let tag of tags; let l = last"><a href="javascript:void(0)" (click)="linkTags(tag)">{{tag}}</a> {{(l == false) ? ',' : '' }} </span>
+
+
+
+
+
+
+
+
+
+<div class="container">
+ <div class="row"> 
+    <div class="comments-container">
+		<h1>Comentarios  </h1>
+
+		<ul id="comments-list" class="comments-list">  
+			<li *ngFor="let row of listComment">
+				<div class="comment-main-level"> 
+					<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+				 
+					<div class="comment-box">
+						<div class="comment-head">
+							<h6 class="comment-name"><a href="http://creaticode.com/blog">xxxx</a></h6>
+							<span>{{row.date | timeAgo}}</span>
+							<i class="fa fa-reply" (click)="reply(row._id)"></i> 
+						</div>
+						<div class="comment-content">
+							{{row.comment}}
+						</div>
+					</div>
+				</div>
+
+                <ul class="comments-list reply-list" [ngClass]="{hidden: row._id != comment_id}">
+					<li *ngFor="let sub_row of row.subComment"> 
+						<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+						<div class="comment-box">
+							<div class="comment-head">
+								<h6 class="comment-name"><a href="http://creaticode.com/blog">xxxx</a></h6>
+								<span>{{sub_row.date | timeAgo}}</span> 
+							</div>
+							<div class="comment-content">
+								{{sub_row.comment}}
+							</div>
+						</div>
+					</li>
+                    <li> 
+						<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+						<div class="comment-box">
+							<div class="comment-head">
+								<h6 class="comment-name"><a href="http://creaticode.com/blog">{{fullname}}</a></h6>
+							</div>
+							<div class="comment-content">
+								<input type="text" class="form-control" [(ngModel)]="sub_message">
+                                <button type="button" class="btn btn-success pull-right" (click)="addSubComment(row._id)">Submit</button> 
+							</div>
+						</div>
+					</li> 
+				</ul> 
+			</li>
+
+            <li>
+				<div class="comment-main-level"> 
+					<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+		 
+					<div class="comment-box">
+						<div class="comment-head">
+							<h6 class="comment-name"><a href="http://creaticode.com/blog">{{fullname}}</a></h6>
+						</div>
+						<div class="comment-content">
+							<input type="text" class="form-control" [(ngModel)]="message">
+                            <button type="button" class="btn btn-success pull-right" (click)="addComment()">Submit</button>  
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	</div>
+</div>

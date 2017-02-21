@@ -1,0 +1,76 @@
+// variable
+@import './scss/normalize.scss';
+@import './scss/variable.scss';
+@import './scss/vendor.scss';
+// mixin
+@import './mixins/setfontstyle.scss'; 
+// custom ui
+@import './scss/navigation.scss'; 
+@import './scss/topbar.scss';  
+@import './scss/main_content';    
+@import './scss/workspace.scss';  
+@import './scss/gobalview.scss';    
+@import './scss/addmembers.scss';   
+@import './scss/button.scss';    
+@import './scss/profile.scss';    
+@import './scss/timeline.scss';  
+@import './scss/card.scss';    
+@import './scss/avatar.scss';   
+@import './scss/writing.scss';    
+@import './scss/login.scss';    
+
+
+
+// Set Gobal
+body {
+    background: $color_body;
+}
+// font face
+@font-face { 
+  font-family: 'Title_1';
+  src: url('../assets/fonts/ThaiSansNeue-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+ }  
+
+ @font-face { 
+  font-family: 'Title_2';
+  src: url('../assets/fonts/ThaiSansNeue-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+ }  
+
+ @font-face { 
+  font-family: 'Title_3';
+  src: url('../assets/fonts/ThaiSansNeue-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+ }       
+
+@font-face { 
+  font-family: 'Text_1';
+  src: url('../assets/fonts/ThaiSansNeue-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+ }  
+
+ @font-face { 
+  font-family: 'Text_2';
+  src: url('../assets/fonts/ThaiSansNeue-ExtraLight.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+ }  
+
+ @font-face { 
+  font-family: 'Text_1_1';
+  src: url('../assets/fonts/Thonburi.ttf') format('truetype');
+  font-weight: 0;
+  font-style: normal;
+ }  
+
+ @font-face { 
+  font-family: 'Text_2_1';
+  src: url('../assets/fonts/ThonburiBold.ttf') format('truetype');
+  font-weight: lighter;
+  font-style: normal;
+ } 

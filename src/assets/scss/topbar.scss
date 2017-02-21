@@ -1,0 +1,48 @@
+.topbar {
+    z-index: $z_index_topbar;
+    position: fixed;
+    top: 0;
+    left: $width_firstmenu + $width_secondmenu;
+    width: calc(100% - 280px);
+    max-width: 100%;
+    height: $height_topbar;
+    background: $color_element_default;
+    border-bottom: 1px solid #E6EAEE;
+}
+
+.topbar {   
+    .current_page_title {
+        @include setfontstyle(Title_3, 35px, $color_text_title_1);
+        display: block;
+        width: calc(100% - 252px);
+        text-overflow: ellipsis;    
+        height: 100%;  
+        float: left; 
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;  
+        margin-left: $space_element;   
+    }
+
+    .dropdown-menu {
+        left: -152px;
+        border: 0px;
+        box-shadow: 0 0px 9px rgba(0,0,0,.175);
+        margin-left: 10px;
+
+        .dropdown-item {
+            @include setfontstyle(Text_2, 24px, $color_text_title_1);
+            &:hover {
+                background: #eee;
+            }
+        }
+    }
+
+    .user_title {
+        width: 192px;
+
+        .avatar_menu {
+            width: 12px;
+        }
+    }
+}

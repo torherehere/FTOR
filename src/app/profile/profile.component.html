@@ -1,0 +1,44 @@
+<div class="workspace">
+  <div class="top_profile row">
+    <div class="col-md-2 avatar_profile">
+        <div class="avatar">
+          <img src="{{avatar}}" (click)="(session_id == uid || permission == 0) ? openModal(): ''">
+        </div>
+        <div class="nameavatar">{{fullname}}</div> 
+    </div>
+    <div class="col-md-6 intro_contact">
+        <div class="item_contact"><i class="glyphicon glyphicon-user"></i> {{position}}</div> 
+        <div class="item_contact"><i class="glyphicon glyphicon-envelope"></i> {{email}}</div> 
+        <div class="item_contact"><i class="glyphicon glyphicon-phone"></i> {{phone}}</div>  
+    </div>
+    <div class="col-md-4 statistic">
+      <div class="box bdr bdb">
+        <span class="num">1</span>
+        <span class="name">OPEN PROJECT</span>
+      </div>
+      <div class="box bdb">
+        <span class="num">12</span>
+        <span class="name">DONE PROJECT COMPLATE</span>
+      </div>
+      <div class="box bdr">
+        <span class="num">1</span>
+        <span class="name">TOTAL HOURS WORKED</span>
+      </div>
+      <div class="box">
+        <span class="num">0</span>
+        <span class="name">TATAL PROJECT HOURS</span>
+      </div> 
+    </div>
+  </div>
+  <div class="toolbar row profile_menu" >
+    <div routerLinkActive="active" routerLink="/profile/{{uid}}/timeline" class="col-md-2 tab">Timeline</div>
+    <div routerLinkActive="active" routerLink="/profile/{{uid}}/generalinfo" class="col-md-2 tab">General Info</div>
+    <div routerLinkActive="active" routerLink="/profile/{{uid}}/accountsetting" class="col-md-2 tab">Account Setting</div>
+    <div routerLinkActive="active" routerLink="/profile/{{uid}}/jobinfo" class="col-md-2 tab">Job Info</div>
+  </div>
+</div>
+
+<div class="content_profile">
+  <router-outlet></router-outlet>
+</div> 
+

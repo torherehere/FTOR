@@ -1,0 +1,23 @@
+<div class="addmembers inactive">
+    <div class="state_top row">
+        <div class="title col-md-3">Send Inactive</div>
+    </div>
+
+    <div class="form_slide">     
+        <div #FormSlideWrap class="wrap_control_form">
+
+            <div class="form">
+                <div class="form-group">
+                    <label for="usr"><font color="red">*&nbsp;</font>E-mail Address:</label>
+                    <input placeholder="@gmail.com" type="text" class="form-control" id="usr" [(ngModel)]="fname">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="action_of_form">
+        <button  class="btn blue" style="color: #FFFFFF;"> Send </button>
+        <button class="btn" style="color: #000;" (click)="closeGobalView()">  Cancel </button>     
+    </div>  
+     
+</div>

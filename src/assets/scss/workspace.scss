@@ -1,0 +1,194 @@
+.workspace.layout_card {
+    min-width: 428px;
+    .row {
+        min-width: 428px;
+    }
+}
+.workspace {
+    position: relative;
+    min-width: 684px;
+    width: 100%;
+    height: 100%;
+    @include setfontstyle(Text_2, 20px, $color_text_title_2); 
+
+    .row {
+        min-width: 684px;
+        margin: 0px;
+    }
+
+    .pad-10 {
+        padding: 10px;
+    }
+
+    .scroll_y {
+        display: inline-block;
+        max-height: 100%;
+        width: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        .scroll_loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 150px;
+            opacity: 0.7;
+            img{width:25px; height: 25px;}
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .scroll_y {
+            overflow: scroll;  
+        }
+    }
+}
+
+
+.workspace {
+    .toolbar {
+        background: $color_element_default;
+        width: 100%;
+        height: 80px;
+        padding-top: 22px;
+
+        .search_bar {
+            position: relative;
+            float: left;
+            width: 270px;
+            height: 36px;
+            margin-left: $space_element;
+            .icon {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                right: 0;
+                height: 100%;
+                width: 23px;
+            }
+            input {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: block;
+                padding-left: 10px;
+                border: 0.7px solid #DFE3E9;
+            }
+        }
+
+        button {
+            &:hover {
+                color: #ffffff;
+                box-shadow: 0px 0px 8px #888888;
+            }
+        }
+    }
+    div.tab {
+        color: $color_menu;
+        width: auto;
+        height: 100%;
+        &.active {
+            color: $color_username;
+            border-bottom: 2px solid $color_username;
+        }
+        &:hover {
+            color: $color_menu;
+            border-bottom: 2px solid $color_menu;
+        }
+    }
+    .head_table {
+        color: $color_menu;
+        margin-left: 0;
+        margin-right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background: $color_body;
+        width: 100%;
+        height: 50px;
+    }
+
+    .head_table.list {
+        background: $color_body;
+        height: 50px;
+        color: $color_menu;
+        &:active,&:hover {
+            background: $color_body;
+        }
+    }
+
+    .list {
+        @include setfontstyle(Text_2, 22px, $color_text_title_2); 
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        text-transform: capitalize;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        height: 82px;
+        background: $color_element_default;
+        border-bottom: 1px solid #E6EAEE;
+
+        div.txt {
+            text-overflow: ellipsis;
+            @include limitLine(1);
+        }
+
+        &:active,&:hover {
+            //color: #fff;
+            background: #FBFBFB;
+        }
+    }
+
+    .list {
+        .none_capitalize {
+            text-transform: none;
+        }
+    }
+
+    .list {
+        .avatar {
+            float: left;
+            width: 50px;
+            height: 50px;
+            overflow: hidden;
+            border-radius: 50%;
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+        .username {
+            float: left;
+            margin-top: 10.665px;
+            margin-left: 10px;
+            width: calc(100% - 62px);
+            height: 100%;
+        }
+    }
+}   
+
+.nav_of_list {
+    @include setfontstyle(Text_2, 16px, $color_menu); 
+    background: $color_body;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 340px);
+    height: 36px;
+    line-height: 2;
+    text-align: center;
+
+    button {
+        border-radius: 4px;
+        background: #FFFFFF;
+        border: 1px solid #E6EAEE;
+        width: 36px;
+        height: 36px;
+    }
+    .prev { float: left; }
+    .next { float: right; }
+}

@@ -1,0 +1,64 @@
+<div class="workspace fade_in">
+  <div class="toolbar">
+    <div class="search_bar">
+      <div class="user_title">
+        <div class="avatar_img" routerLink="/profile/{{userid}}/timeline">
+          <img [src]="(avatar) ? avatar : '../assets/images/Avatar.png'">
+        </div>
+        <div class="avatar_detail">
+          <span class="name">{{fullname}}</span>
+          <span class="hole">{{dateNow | date: 'dd/MM/yyyy'}}</span>
+        </div>
+        <div class="avatar_menu">
+          <!--<i class="glyphicon glyphicon-trash"></i>-->
+        </div>
+      </div>
+    </div> 
+    <button class="btn green" (click)="submit()"> <i class="icon"><img src="../assets/images/sendicon.png"></i> Save </button>
+    <select class="btn select" [(ngModel)]="catalog_id"> 
+        <option  *ngFor="let row of listCatalog; let i = index" value="{{row._id}}">{{row.name}}</option> 
+    </select>
+    <div class="pull-rigth">{{response}}</div> 
+  </div>
+  <div class="scroll_y"> 
+    <!--Writing-->
+    <div class="writing">
+      <div class="profile_form">
+        <div class="form">
+            <div class="form-group"> 
+                <!--Title-->
+                <input class="form-control title" placeholder="Title" [(ngModel)]="title">
+                <!--Upload Cover-->
+                <div class="button-container" >
+                  <label class="upload-button is-pulled-left" style="cursor:pointer">
+                    <input type="file" class="hidden" ngFileSelect
+                          [options]="options" 
+                          [events]="inputUploadEvents"
+                          (onUpload)="handleUpload($event)"
+                          (onPreviewData)="handlePreviewData($event)"
+                          (beforeUpload)="beforeUpload($event)">
+                          ==> Plese Select Cover Upload <== 
+                  </label>
+                </div>
+                <div *ngIf="previewData && !resp">
+                  <img [src]="previewData" height="84" width="84"> 
+                </div> 
+
+                <p>
+                  Allowed extensions: <code><b>.jpg</b>, <b>.png</b></code>
+                </p>
+                <!-- Tags -->
+                <div class="form-group tags">
+                  <rl-tag-input [(ngModel)]="tags" placeholder="Click To Add Tags.." [addOnComma]=false [addOnSpace]=true ></rl-tag-input>
+                </div>
+            </div>
+        </div>
+      </div>
+       <!-- Froala -->
+      <div class="froala" [froalaEditor]="titleOptions" [(froalaModel)]="content"></div>
+    </div>
+  </div>
+</div>
+
+
+

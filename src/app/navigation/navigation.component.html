@@ -1,0 +1,59 @@
+<div *ngIf="svnav?.getVisibility() == true" class="navigation">
+  <div class="firstmenu">
+    <div class="logo">
+      <img src="../assets/images/logo.png">
+    </div>
+
+    <div routerLinkActive="active"  routerLink="/dashboard" class="tab">
+      <span class="icon">
+        <i class="glyphicon glyphicon-stats"></i>
+      </span>
+      <span class="text">Dashboard</span>
+    </div>
+
+
+    <div routerLinkActive="active"  routerLink="/project" class="tab">
+      <span class="icon">
+        <i class="glyphicon glyphicon-th-large"></i>
+      </span>
+      <span class="text">Project</span>
+    </div>
+
+    <div routerLinkActive="active" routerLink="/team" class="tab">
+      <span class="icon">
+        <i class="glyphicon glyphicon-user"></i>
+      </span>
+      <span class="text">Team</span>
+    </div>
+
+    <div routerLinkActive="active" routerLink="/blog" class="tab">
+      <span class="icon">
+        <i class="glyphicon glyphicon-text-background"></i>
+      </span>
+      <span class="text">Blog</span>
+    </div>
+
+  </div>
+  <div class="secondmenu">
+    <div class="menu_list">
+      <div class="head_list">
+        Menu
+      </div>
+      <ul>
+        <li>Active Members</li>
+        <li>Inactive Members</li>
+      </ul>
+      <hr>
+    </div>
+    <div class="chat_list">
+      <div class="head_list">
+        Chat Team
+      </div>
+      <ul>
+        <li>Michel Maoufdf</li>
+        <li>After Effect</li>
+      </ul>
+    </div>
+  </div>
+</div>
+  

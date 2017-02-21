@@ -1,0 +1,42 @@
+<div class="addmembers">
+    <div class="state_top row">
+        <div class="title col-md-3">Edit Avatar</div>
+    </div>
+
+    <div class="form_slide">     
+        <div #FormSlideWrap class="wrap_control_form">
+
+            <div class="form">
+                <div class="form-group">  
+                    <div class="button-container">
+                        <label class="upload-button is-pulled-left">
+                            <input type="file"
+                                class="hidden"
+                                ngFileSelect
+                                [options]="options" 
+                                [events]="inputUploadEvents"
+                                (onUpload)="handleUpload($event)"
+                                (onPreviewData)="handlePreviewData($event)"
+                                (beforeUpload)="beforeUpload($event)">
+                            Browse < - - - Click Upload Here
+                        </label>
+                    </div> 
+                </div>
+
+                <div class="form-group">
+                    <div *ngIf="previewData && !resp">
+                        <img [src]="previewData" height="256" width="256"> 
+                    </div> 
+                </div>  
+            </div>
+
+        </div>
+    </div>
+
+    <div class="action_of_form">
+        <span *ngIf="response != ''">{{response}}</span>
+        <button class="btn blue" style="color: #FFFFFF;" (click)="submit()"> Save </button>
+        <button class="btn" style="color: #000;" (click)="closeGobalView()">  Cancel </button>     
+    </div>  
+     
+</div>

@@ -1,0 +1,36 @@
+<div class="bg_login fade_in">
+  <div class="side green"> 
+    <div class="logo"> <img src="../assets/images/logo.png"> </div>
+  </div>
+  <div class="side black"> </div>
+  <div class="wrapper">
+      <div class="side black">
+        <h2>Welcome to Dashboard</h2>
+        <p>The best design UI Kit for designing new Interfaces and Dashboards</p>
+      </div>
+      <div class="side">
+        <h2 class="txt_login">Login to your account</h2>
+        <div class="profile_form">
+          <div class="form">
+              <div class="form-group">
+                <label>Email</label>
+                  <input  class="form-control" placeholder="Email" [(ngModel)]="email">
+              </div>
+          </div>
+          <div class="form">
+              <div class="form-group">
+                <label>Password</label>
+                  <input  class="form-control" type="password" placeholder="password" [(ngModel)]="password">
+              </div>
+          </div>
+        </div>
+        <div class="action_form">
+          <button class="btn" style="background: #1F5480;" (click)="submitLogin()">Login</button>
+          <span>{{responde}}</span>
+          <!--<div>Forgot ?</div>-->
+        </div>
+      </div>
+    </div>
+</div>
+
+

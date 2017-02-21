@@ -1,0 +1,56 @@
+<div class="workspace layout_card fade_in">
+  <div class="toolbar">
+    <div class="search_bar">
+      <form class="form-search" method="get" id="s" action="/">
+          <div class="input-append">
+              <input type="text" class="input-medium search-query" name="s" placeholder="Search" [(ngModel)]="search" (keyup)="eventSearch()">
+              <button type="submit" class="add-on"><i class="icon-search"></i></button>
+          </div>
+      </form>
+    </div> 
+    <button class="btn blue" routerLink="/writing"> <i class="icon"></i> Writing </button> 
+  </div>
+  <div class="scroll_y"> 
+    <!--writing-->
+      <div class="card_row row">
+        <div *ngFor="let row of listBlog" class="col-md-6 col-lg-4 col-sm-12">
+          <div class="card">
+            <div class="cvimg" > 
+              <div class="head_card pad-10">
+                  <div class="user_title">
+                    <div class="avatar_img" style="cursor:pointer" routerLink="/profile/{{uid}}/timeline">
+                      <img [src]="(row.owner.avatar) ? app.api()+row.owner.avatar.path : '../assets/images/Avatar.png'">
+                      <!--<img src="../assets/images/Avatar.png">-->
+                    </div>
+                    <div class="avatar_detail">
+                      <span class="name" style="cursor:pointer" routerLink="/profile/{{uid}}/timeline">{{row.owner.first_name+' '+row.owner.last_name}}</span>
+                      <span class="hole">{{app.convertTime(row.date) | date: 'dd/MM/yyyy'}}, {{app.convertTime(row.date) | timeAgo}}</span>
+                    </div>
+                    <div class="avatar_menu">
+                      <i class="glyphicon glyphicon-pencil" style="cursor:pointer" routerLink="/editblog/{{row._id}}"></i>&nbsp;
+                      <i class="glyphicon glyphicon-trash" style="cursor:pointer" (click)="delete(row._id)"></i>&nbsp;
+                    </div>
+                  </div>
+              </div> 
+              <div class="cvcontainer" style="cursor:pointer" (click)="link(row.slug)">
+                <div class="cvimg">
+                    <!--<img src="./assets/images/loading.gif">-->
+                    <img [src]="app.api()+row.img">
+                </div>
+              </div>
+              <div class="footer_card pad-10">
+                <div class="txt_1">{{row.title}}</div>
+                <div class="txt_2">
+                    {{app.htmlToPlaintext(row.description)}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--<div class="scroll_loading">
+          <img src="./assets/images/loader.gif">
+      </div>-->
+  </div>
+</div> 
+

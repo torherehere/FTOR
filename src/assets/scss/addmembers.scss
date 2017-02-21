@@ -1,0 +1,141 @@
+
+$width_of_form: 714px;
+.addmembers.inactive {
+    height: 300px !important;
+}
+.addmembers {
+    position: relative;
+    width: $width_of_form;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 601px;
+    background: $color_element_default;
+    @include setfontstyle(Text_2, 18px, $color_text_title_2); 
+    @media screen and (max-width: 1024px){
+        width: 601px;
+    }
+
+    .row {
+        margin: 0;
+    }
+    .state_top {
+        width: 100%;
+        height: 109px;
+        background: $color_username;
+        box-shadow: 0px 1px 2px #E9E9E9;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        div {
+            @include setfontstyle(Text_2, 24px, $color_element_default); 
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            text-align: center;
+            height: 100%;
+        }
+        div.wait {
+             border-bottom: 4px solid $color_element_default;
+        } 
+
+        div.success {
+             border-bottom: 4px solid $color_menu_active;
+        }     
+
+        div.title {
+            text-overflow: ellipsis;
+            letter-spacing: 1px;
+            @include setfontstyle(Title_3, 30px, $color_element_default); 
+        }
+    }
+
+    .form_slide {
+        position: relative;
+        width: 100%;
+        height: calc(601px - 205px); 
+        overflow: hidden;
+        @include setfontstyle(Text_2, 20px, #444245); 
+
+        .wrap_control_form {
+            overflow: hidden;
+            height: 100%;
+            width: 99999px;
+            .form {
+                height: 100%;
+                width: $width_of_form;
+                float: left;
+                text-align: -webkit-center;
+                @media screen and (max-width: 1024px){
+                    width: 601px;
+                }
+
+                div.form-group {
+                    margin-right: 30px;
+                    margin-top: 30px;
+                    width: 75%;
+                    height: 38px;
+                    label {
+                        @include limitLine(1);
+                        float: left;
+                        width: 120px;
+                        height: 38px;
+                        margin: 0;
+                        display: flex;
+                        align-items: center;
+                        
+                    }
+                    label[for="gender"]{
+                        width: 60px;
+                    }
+                    select {
+                        height: 38px;
+                        float: left;
+                        margin-left: 30px;
+                        width: calc(100% - 300px);
+                        background: transparent;
+                        border: 1px solid #CED0DA;
+
+                        option {
+                            @include setfontstyle(Text_2, 20px, #444245); 
+                        }
+                    }
+                    input.form-control {
+                        @include setfontstyle(Text_2, 20px, #444245); 
+                        height: 38px;
+                        float: left;
+                        margin-left: 30px;
+                        width: calc(100% - 160px);
+                    }
+                    input[type="radio"]{
+                        margin-top: 10px;
+                        margin-right: 15px;
+                        float: left;
+                        margin-left: 30px;
+                    }  
+                    input[type="time"]{
+                        width: auto;
+                        margin-top: 10px;
+                        margin-right: 15px;
+                        float: left;
+                        margin-left: 30px;
+                    }  
+                }
+            }
+        }
+    }
+
+    .action_of_form {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        bottom: $space_element;
+
+        button.btn_back_page {
+            @include setfontstyle(Text_2, 17px, #444245);    
+            line-height: 20px;
+            float: left;  
+            background: transparent;    
+        }
+    }
+}

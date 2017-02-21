@@ -1,0 +1,29 @@
+<div class="profile_form fade_in">
+  <h1 class="head_form">Job Info</h1>
+  <div class="form">
+      <div class="form-group">
+          <label for="usr">Job Title</label>
+          <input placeholder="Job Title" type="text" class="form-control" id="usr" [(ngModel)]="jobTitle" *ngIf="session_id != uid && permission != 0" readonly>
+          <input placeholder="Job Title" type="text" class="form-control" id="usr" [(ngModel)]="jobTitle" *ngIf="session_id == uid || permission == 0">
+      </div>
+      <div class="form-group">
+          <label for="pwd">Salary</label>
+          <input placeholder="Salary" type="text" class="form-control" id="pwd" [(ngModel)]="saraly" *ngIf="session_id != uid && permission != 0" readonly>
+          <input placeholder="Salary" type="text" class="form-control" id="pwd" [(ngModel)]="saraly" *ngIf="session_id == uid || permission == 0">
+      </div>
+      <div class="form-group">
+          <label for="usr">Salary Term</label>
+          <input placeholder="Salary Term" type="email" class="form-control" id="pwd" [(ngModel)]="salaryTerm" *ngIf="session_id != uid && permission != 0" readonly>
+          <input placeholder="Salary Term" type="email" class="form-control" id="pwd" [(ngModel)]="salaryTerm" *ngIf="session_id == uid || permission == 0">
+      </div>
+      <div class="form-group">
+          <label for="usr">Date of Hire </label>
+          <input placeholder="Salary Term" type="date" class="form-control"  id="pwd" [(ngModel)]="dateOfHire" *ngIf="session_id != uid && permission != 0" readonly>
+          <input placeholder="Salary Term" type="date" class="form-control"  id="pwd" [(ngModel)]="dateOfHire" *ngIf="session_id == uid || permission == 0">
+      </div>
+  </div>
+  <div class="action_of_form">
+      <span>{{response}}</span>
+      <button type="button" class="btn blue" (click)="submit()" *ngIf="session_id == uid || permission == 0"> SAVE </button>
+  </div>
+</div>

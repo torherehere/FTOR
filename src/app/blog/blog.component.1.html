@@ -1,0 +1,85 @@
+<button (click)="logout()">LOG OUT</button>
+
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Date</th> 
+      <th>Edit</th> 
+      <th>Delete</th> 
+      <th>Link</th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of dataBlog; let i = index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{row.title}}</td>
+      <td>{{row.date | date: 'dd/MM/yyyy'}}</td> 
+      <td><button (click)="edit(row._id)">Edit</button></td> 
+      <!--(click)="edit(row._id)"-->
+      <td><button (click)="delete(row._id)">Delete</button></td> 
+      <td><button routerLink="/liststory/{{row.catalog_id.slug}}/{{row.slug}}">Link</button></td> 
+    </tr> 
+  </tbody>
+</table>
+ 
+<div class="button-container">
+  <label class="upload-button is-pulled-left">
+    <input type="file"
+           class="hidden"
+           ngFileSelect
+           [options]="options" 
+           [events]="inputUploadEvents"
+           (onUpload)="handleUpload($event)"
+           (onPreviewData)="handlePreviewData($event)"
+           (beforeUpload)="beforeUpload($event)">
+    Browse 
+  </label>
+</div>
+
+<div *ngIf="previewData && !resp">
+  <img [src]="previewData" height="84" width="84"> 
+</div> 
+
+<p>
+  Allowed extensions: <code><b>.jpg</b>, <b>.png</b></code>
+</p>
+
+<div *ngIf="_id != null">
+  <button type="button" class="start-upload-button" routerLink="/editcover/{{_id}}">Edit Cover</button>
+</div>
+
+<!--<div *ngIf="resp">
+  <pre><code>{{ resp | json }}</code></pre>
+</div>-->
+
+<div *ngIf="errorMessage">
+  <code>{{ errorMessage }}</code>
+</div> 
+  
+<div class="form-group">
+  <label for="usr">Title:</label>
+  <input type="text" class="form-control" [(ngModel)]="title">
+</div>
+
+<div class="form-group">
+  <label for="sel1">Catalog:</label>
+  <select class="form-control" [(ngModel)]="catalog_id">
+    <option *ngFor="let row of listCatalog" value="{{row._id}}">{{row.name}}</option> 
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="usr">Tag Input:</label>
+  <rl-tag-input [(ngModel)]="tags" placeholder="Add any tag!" [addOnComma]=false [addOnSpace]=true ></rl-tag-input>
+</div>
+
+<div [froalaEditor]="titleOptions" [(froalaModel)]="content"></div>
+
+<div class="form-group">
+  <button *ngIf="_id == null" type="button" class="btn btn-primary center-block" (click)="submit()">Submit</button> 
+  <button *ngIf="_id != null" type="button" class="btn btn-primary center-block" (click)="update()">Update</button> 
+</div>
+
+<div class="pull-rigth">{{response}}</div>  

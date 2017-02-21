@@ -1,0 +1,68 @@
+<h1>Level 1</h1>
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Title</th> 
+      <th>Edit</th> 
+      <th>Delete</th>  
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of list; let i = index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{row.name}}</td> 
+      <td><button (click)="edit(row._id)">Edit</button></td> 
+      <td><button (click)="delete(row._id)">Delete</button></td>  
+    </tr> 
+  </tbody>
+</table>  
+<div class="col-xs-3">
+  <input class="form-control" id="ex1" type="text" [(ngModel)]="name">
+</div>
+
+<div class="col-xs-3">
+  <button type="button" class="btn btn-primary btn-sm" (click)="submit()" *ngIf="_id == null">Submit</button>
+  <button type="button" class="btn btn-primary btn-sm" (click)="update()" *ngIf="_id != null">Update</button>
+</div>
+
+<br><br><br><br>
+<h1>Level 2</h1>
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Level 1</th> 
+      <th>Title</th> 
+      <th>Edit</th> 
+      <th>Delete</th>  
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of listLv2; let i = index">
+      <th scope="row">{{i+1}}</th>
+      <th scope="row">{{row.lv1.name}}</th>
+      <td>{{row.name}}</td> 
+      <td><button (click)="editLv2(row._id)">Edit</button></td> 
+      <td><button (click)="delete(row._id)">Delete</button></td>  
+    </tr> 
+  </tbody>
+</table> 
+
+<div class="col-xs-3">
+    <select class="form-control input-small" [(ngModel)]="parent_id">
+      <option *ngFor="let row of list" value="{{row._id}}">{{row.name}}</option> 
+    </select> 
+</div>
+
+<div class="col-xs-3">
+  <input class="form-control" id="ex1" type="text" [(ngModel)]="lv2_name">
+</div>
+
+<div class="col-xs-3">
+  <button type="button" class="btn btn-primary btn-sm" (click)="submitLv2()" *ngIf="lv2_id == null">Submit</button>
+  <button type="button" class="btn btn-primary btn-sm" (click)="updateLv2()" *ngIf="lv2_id != null">Update</button>
+</div>
+
+
+

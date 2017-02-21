@@ -1,0 +1,36 @@
+<div class="profile_form fade_in">
+  <h1 class="head_form">General Info</h1>
+  <div class="form">
+      <div class="form-group">
+          <label for="usr"><font color="red">*&nbsp;</font>First Name:</label> 
+          <input placeholder="First Name" type="text" class="form-control" id="usr" [(ngModel)]="fname" *ngIf="session_id != uid && permission != 0" readonly>
+          <input placeholder="First Name" type="text" class="form-control" id="usr" [(ngModel)]="fname" *ngIf="session_id == uid || permission == 0">
+      </div>
+      <div class="form-group">
+          <label for="pwd"><font color="red">*&nbsp;</font>Last Name:</label>
+          <input placeholder="Last Name" type="text" class="form-control" id="pwd" [(ngModel)]="lname" *ngIf="session_id != uid && permission != 0" readonly>
+          <input placeholder="Last Name" type="text" class="form-control" id="pwd" [(ngModel)]="lname" *ngIf="session_id == uid || permission == 0">
+      </div>
+      <div class="form-group">
+          <label for="usr"><font color="red">*&nbsp;</font>Address:</label>
+          <input placeholder="Address" type="text" class="form-control" id="pwd" [(ngModel)]="address" *ngIf="session_id != uid && permission != 0" readonly>
+          <input placeholder="Address" type="text" class="form-control" id="pwd" [(ngModel)]="address" *ngIf="session_id == uid || permission == 0">
+      </div>
+      <div class="form-group">
+          <label for="usr"><font color="red">*&nbsp;</font>Phone Numbe:</label>
+          <input placeholder="Phone Numbe" type="text" class="form-control" id="pwd" maxlength="10" [(ngModel)]="phone" *ngIf="session_id != uid && permission != 0" readonly>
+          <input placeholder="Phone Numbe" type="text" class="form-control" id="pwd" maxlength="10" [(ngModel)]="phone" *ngIf="session_id == uid || permission == 0">
+      </div>
+
+      <div class="form-group">
+          <label for="usr"><font color="red">*&nbsp;</font>Gender:</label>
+          <input type="radio" name="gender" id="male" value="male" [(ngModel)]="gender"><label class="gender_label" for="male">Male</label>
+          <input type="radio" name="gender" id="female" value="female" [(ngModel)]="gender"><label class="gender_label"  for="female">Female</label>
+      </div>
+  </div>
+  <div class="action_of_form">
+      <span>{{response}}</span>
+      <button type="button" class="btn blue" (click)="submit()" *ngIf="session_id == uid || permission == 0"> SAVE </button>
+  </div>
+</div>
+

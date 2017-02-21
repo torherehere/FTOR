@@ -1,0 +1,14 @@
+<!-- This Topbar -->
+<app-topbar></app-topbar>
+<!-- This Sidebar Navigation -->
+<app-navigation></app-navigation>
+<!-- This Content svset?.getVisibility() == true -->
+<div [Maincontent]="[{topbar:svtopbar?.getVisibility()},{nav: svnav?.getVisibility()}]" class="main_content_rander">
+  <router-outlet></router-outlet>
+</div>
+<!-- Gobal View -->
+<div #GobalContainer><div #GobalContent></div></div>
+<backdrop></backdrop>
+  
+  
+

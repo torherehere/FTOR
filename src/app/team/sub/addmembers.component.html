@@ -1,0 +1,93 @@
+<div class="addmembers">
+    <div class="state_top row">
+        <div class="title col-md-3">Add Members</div>
+        <div [ngClass]="st_1" (click)="indexPage(0);">
+            <div class="name_state">General Info</div>
+        </div>
+        <div [ngClass]="st_2" (click)="indexPage(1);">
+            <div class="name_state">Job Title</div>
+        </div>
+        <div [ngClass]="st_3" (click)="indexPage(2);">
+            <div class="name_state">Account Setting</div>
+        </div>
+    </div>
+
+    <div class="form_slide">     
+        <div #FormSlideWrap class="wrap_control_form">
+
+            <div class="form">
+                <div class="form-group">
+                    <label for="usr"><font color="red">*&nbsp;</font>First Name:</label>
+                    <input placeholder="First Name" type="text" class="form-control" id="usr" [(ngModel)]="fname">
+                </div>
+                <div class="form-group">
+                    <label for="pwd"><font color="red">*&nbsp;</font>Last Name:</label>
+                    <input placeholder="Last Name" type="text" class="form-control" id="pwd" [(ngModel)]="lname">
+                </div>
+                <div class="form-group">
+                    <label for="usr"><font color="red">*&nbsp;</font>Address:</label>
+                    <input placeholder="Address" type="text" class="form-control" id="pwd" [(ngModel)]="address">
+                </div>
+                <div class="form-group">
+                    <label for="usr"><font color="red">*&nbsp;</font>Phone Numbe:</label>
+                    <input placeholder="Phone Numbe" type="text" class="form-control" id="pwd" maxlength="10" [(ngModel)]="phone">
+                </div>
+  
+                <div class="form-group">
+                    <label for="usr"><font color="red">*&nbsp;</font>Gender:</label>
+                    <input type="radio" name="gender" id="male" value="male" [(ngModel)]="gender"><label for="male">Male</label>
+                    <input type="radio" name="gender" id="female" value="female" [(ngModel)]="gender"><label for="female">Female</label>
+                </div>
+            </div>
+
+            <div class="form">
+                <div class="form-group">
+                    <label for="usr">Job Title</label>
+                    <input placeholder="Job Title" type="text" class="form-control" id="usr" [(ngModel)]="jobTitle">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Salary</label>
+                    <input placeholder="Salary" type="password" class="form-control" id="pwd" [(ngModel)]="saraly">
+                </div>
+                <div class="form-group">
+                    <label for="usr">Salary Term</label>
+                    <input placeholder="Salary Term" type="email" class="form-control" id="pwd" [(ngModel)]="salaryTerm">
+                </div>
+                <div class="form-group">
+                    <label for="usr">Date of Hire</label>
+                    <input placeholder="Salary Term" type="date" class="form-control" id="pwd" [(ngModel)]="dateOfHire">
+                </div>
+            </div>
+            <div class="form">
+                <div class="form-group">
+                    <label for="usr"><font color="red">*&nbsp;</font>E-mail</label>
+                    <input placeholder="E-mail" type="text" class="form-control" id="usr" [(ngModel)]="email">
+                </div>
+                <div class="form-group">
+                    <label for="pwd"><font color="red">*&nbsp;</font>Password</label>
+                    <input placeholder="Password" type="password" class="form-control" id="pwd" [(ngModel)]="password">
+                </div>
+                <div class="form-group">
+                    <label for="usr"><font color="red">*&nbsp;</font>Role</label>
+                    <select class="selectpicker" [(ngModel)]="position_id">
+                        <optgroup label="Picnic">
+                            <option *ngFor="let row of listPosition" value="{{row._id}}">{{row.position}}</option> 
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+ 
+        </div>
+    </div>
+
+    <div class="action_of_form">
+        <button (click)="prevPage()" *ngIf="currentPage !== 0" type="button" class="btn btn-default btn_back_page">
+        <span style="color: #7A7A7A;"  class="glyphicon glyphicon-menu-left">back</span> 
+        </button>
+        <span *ngIf="response != ''">{{response}}</span>
+        <button *ngIf="currentPage !== PageAmount-1" class="btn blue" style="color: #FFFFFF;" (click)="nextPage()"> Next </button>
+        <button *ngIf="currentPage == PageAmount-1"  class="btn green" style="color: #FFFFFF;" (click)="submit()"> Save </button>
+        <button class="btn" style="color: #000;" (click)="closeGobalView()">  Cancel </button>     
+    </div>  
+     
+</div>

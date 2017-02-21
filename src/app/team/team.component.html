@@ -1,0 +1,38 @@
+<div class="workspace fade_in">
+  <div class="toolbar">
+    <div class="search_bar">
+      <input type="search" placeholder="Search by Name" (keyup)="eventSearch()" [(ngModel)]="search"> 
+      <span class="icon"><img width="18px" height="18px" src="../assets/images/iconsearch.png"></span> 
+    </div> 
+    <button class="btn black" (click)="sendInactive()"> <i class="icon"><img src="../assets/images/sendicon.png"></i> Send Inactive </button>
+    <button *ngIf="permission == 0" class="btn blue" (click)="addMembers()"> <i class="icon"><img src="../assets/images/Plus Icon.png"></i> Add Members</button>  
+  </div>
+  <div class="head_table list row">
+    <div class="col-md-1">
+        <div class="avatar"> </div>
+    </div>
+    <div class="col-md-3 txt">Name</div>
+    <div class="col-md-3 txt">Job Title</div>
+    <div class="col-md-3 txt">E-mail</div>
+    <div class="col-md-2 txt">Phone</div>
+  </div>
+  <div class="scroll_y" style="cursor:pointer"> 
+    <div class="list row" *ngFor="let per of listUser; let i = index;" routerLink="/profile/{{per._id}}/timeline"> 
+      <div class="col-md-1">
+        <div class="avatar"> 
+          <img src="{{ (per.avatar) ? app.api()+per.avatar.path : '../assets/images/Avatar.png' }}">
+        </div>
+      </div>
+      <div class="col-md-3 txt">{{per.first_name+' '+per.last_name}}</div>
+      <div class="col-md-3 txt">{{per.role.position}}</div>
+      <div class="col-md-3 txt none_capitalize">{{per.email}}</div>
+      <div class="col-md-2 txt">{{per.phone}}</div>
+    </div>
+  </div>
+</div>
+
+  <div class="nav_of_list">
+    Page 1 of 1
+    <button class="prev">&#8249;</button>
+    <button class="next">&#8250;</button>
+  </div>
