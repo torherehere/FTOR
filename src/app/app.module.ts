@@ -1,3 +1,8 @@
+import { Ads } from './ads/ads';
+import { Tophitz } from './tophitz/tophitz';
+import { Djtime } from './djtime/djtime';
+import { Contact } from './contact/contact';
+import { Advertising } from './advertising/advertising';
 import { EditBlog } from './editblog/editblog';
 import { profile_routes } from './profile/profile.routing';
 import { EditaVatar } from './profile/editavatar/editavatar';
@@ -48,15 +53,18 @@ import { LoginComponent } from './login/login.component';
 import { MaincontentDirective } from './../directive/maincontent.directive';
 import { WritingComponent } from './writing/writing.component';
 
-
-
 let routing = [
   ...profile_routes,
   {path:'login',component:LoginComponent},
   {path:'',component: DashborardComponent},
   {path:'dashboard', component: DashborardComponent},
   {path:'project',component: ProjectComponent},
+  {path:'advertising',component: Advertising}, 
+  {path:'djtime',component: Djtime},
+  {path:'contact',component: Contact}, 
   {path:'team',component: TeamComponent},
+  {path:'tophitz',component: Tophitz}, 
+  {path:'ads',component: Ads}, 
   {path:'blog',component: BlogComponent},
   {path:'writing',component: WritingComponent},
   {path:'editblog/:_id', component:EditBlog},
@@ -74,6 +82,7 @@ let routing = [
     TopbarComponent,
     DashborardComponent,
     ProjectComponent,
+    Advertising,
     TeamComponent,
     BlogComponent,
     Page404Component,
@@ -97,6 +106,10 @@ let routing = [
     LoginComponent,
     MaincontentDirective,
     WritingComponent,
+    Contact,
+    Djtime,
+    Tophitz,
+    Ads,
   ],
   imports: [
     RouterModule.forRoot(routing),
