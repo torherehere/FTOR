@@ -1,6 +1,7 @@
+import { Listhits } from './listhits/listhits';
+import { HitsSV } from './api/hits';
 import { Ads } from './ads/ads';
 import { Partner } from './partner/partner';
-import { StatusHitSV } from './api/status_hit';
 import { DjTimeSV } from './api/djtime';
 import { CityRadioSV } from './api/cityradio'; 
 import { Tophitz } from './tophitz/tophitz';
@@ -33,6 +34,7 @@ import { NgUploaderModule } from 'ngx-uploader';
 import { RlTagInputModule } from 'angular2-tag-input';  
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg'; 
 import { TimeAgoPipe } from 'time-ago-pipe';  
+import { Typeahead } from 'ng2-typeahead';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
@@ -65,6 +67,7 @@ let routing = [
   {path:'project',component: ProjectComponent},
   {path:'advertising',component: Advertising}, 
   {path:'djtime',component: Djtime},
+  {path:'listhits/:_id',component: Listhits},
   {path:'ads',component: Ads},
   {path:'contact',component: Contact}, 
   {path:'team',component: TeamComponent},
@@ -91,7 +94,7 @@ let routing = [
     TeamComponent,
     BlogComponent,
     Page404Component,
-    BackdropComponent,
+    BackdropComponent,  
     SlideDirective,
     AddmembersComponent,
     NookSlides,
@@ -116,6 +119,8 @@ let routing = [
     Tophitz,
     Partner,
     Ads,
+    Typeahead,
+    Listhits
   ],
   imports: [
     RouterModule.forRoot(routing),
@@ -140,7 +145,7 @@ let routing = [
     CommentSV, 
     CityRadioSV,
     DjTimeSV,
-    StatusHitSV,
+    HitsSV,
   ],
   entryComponents: [
     AddmembersComponent,
