@@ -1,3 +1,13 @@
-<p>
-  project works!
-</p>
+<div class="workspace fade_in"> 
+  <div class="scroll_y"> 
+    <!--Writing-->
+    <div class="writing">
+       <!-- Froala -->
+      <div class="froala" [froalaEditor]="titleOptions" [(froalaModel)]="content"></div>
+    </div>
+    <div class="toolbar"> 
+      <span>{{response}}</span>
+      <button class="btn green" (click)="submit()"> <i class="icon"><img src="../assets/images/sendicon.png"></i> Save </button>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,8 @@
 import { Ads } from './ads/ads';
+import { Partner } from './partner/partner';
+import { StatusHitSV } from './api/status_hit';
+import { DjTimeSV } from './api/djtime';
+import { CityRadioSV } from './api/cityradio'; 
 import { Tophitz } from './tophitz/tophitz';
 import { Djtime } from './djtime/djtime';
 import { Contact } from './contact/contact';
@@ -61,10 +65,11 @@ let routing = [
   {path:'project',component: ProjectComponent},
   {path:'advertising',component: Advertising}, 
   {path:'djtime',component: Djtime},
+  {path:'ads',component: Ads},
   {path:'contact',component: Contact}, 
   {path:'team',component: TeamComponent},
   {path:'tophitz',component: Tophitz}, 
-  {path:'ads',component: Ads}, 
+  {path:'partner',component: Partner}, 
   {path:'blog',component: BlogComponent},
   {path:'writing',component: WritingComponent},
   {path:'editblog/:_id', component:EditBlog},
@@ -109,6 +114,7 @@ let routing = [
     Contact,
     Djtime,
     Tophitz,
+    Partner,
     Ads,
   ],
   imports: [
@@ -132,6 +138,9 @@ let routing = [
     PositionSV,
     BlogSV, 
     CommentSV, 
+    CityRadioSV,
+    DjTimeSV,
+    StatusHitSV,
   ],
   entryComponents: [
     AddmembersComponent,

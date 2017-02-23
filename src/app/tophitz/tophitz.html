@@ -1,3 +1,66 @@
-<p>
-  tophitz works!
-</p>
+<h1>List DJ ยังไม่ได้ทำ</h1>
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Status</th> 
+      <th>Last Week</th> 
+      <th>Label</th>  
+      <th>Music</th>  
+      <th>Artist</th>  
+      <th>Peak</th>  
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of dataDJ; let i = index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{row.time_start+' - '+row.time_end}}</td> 
+      <td>{{row.name}}</td> 
+      <td>{{row.name}}</td> 
+      <td>{{(row.week == 1) ? 'Mon-Thu' : 'Fri'}}</td> 
+      <td><button (click)="edit(row._id)">Edit</button></td> 
+      <td><button (click)="delete(row._id)">Delete</button></td>  
+    </tr> 
+  </tbody>
+</table>  
+
+
+<div class="col-xs-2">
+    <select class="form-control input-small" [(ngModel)]="status">
+      <option *ngFor="let row of listStatus" value="{{row._id}}">{{row.name}}</option> 
+    </select> 
+</div>
+
+<div class="col-xs-2">
+    <input placeholder="Last week" type="text" class="form-control"  id="pwd" [(ngModel)]="lastweek">
+</div>
+
+<div class="col-xs-2">
+    <input placeholder="On Chat" type="text" class="form-control"  id="pwd" [(ngModel)]="onchat">
+</div>
+
+<div class="col-xs-2">
+    <input placeholder="Lebel" type="text" class="form-control"  id="pwd" [(ngModel)]="lebel">
+</div>
+
+<div class="col-xs-2">
+    <input placeholder="Music" type="text" class="form-control"  id="pwd" [(ngModel)]="music">
+</div>
+
+<div class="col-xs-2">
+    <input placeholder="Artist" type="text" class="form-control"  id="pwd" [(ngModel)]="artist">
+</div>
+
+<div class="col-xs-2">
+    <input placeholder="Peak" type="text" class="form-control"  id="pwd" [(ngModel)]="peak">
+</div>
+
+<div class="col-xs-3">
+    <input placeholder="Date of Week" type="date" class="form-control"  id="pwd" [(ngModel)]="dateofweek">
+</div>
+
+<div class="col-xs-3">
+  <span>{{response}}</span>
+  <button type="button" class="btn btn-primary btn-sm" (click)="submit()" *ngIf="_id == null">Submit</button>
+  <button type="button" class="btn btn-primary btn-sm" (click)="update()" *ngIf="_id != null">Update</button>
+</div>
