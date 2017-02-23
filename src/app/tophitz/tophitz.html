@@ -1,66 +1,96 @@
-<h1>List DJ ยังไม่ได้ทำ</h1>
+<h1>List Music</h1>
 <table class="table">
   <thead class="thead-inverse">
     <tr>
       <th>#</th>
-      <th>Status</th> 
-      <th>Last Week</th> 
-      <th>Label</th>  
+      <th>Cover</th>  
       <th>Music</th>  
-      <th>Artist</th>  
-      <th>Peak</th>  
+      <th>Artist</th>   
+      <th>Delete</th>  
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of dataDJ; let i = index">
-      <th scope="row">{{i+1}}</th>
-      <td>{{row.time_start+' - '+row.time_end}}</td> 
-      <td>{{row.name}}</td> 
-      <td>{{row.name}}</td> 
-      <td>{{(row.week == 1) ? 'Mon-Thu' : 'Fri'}}</td> 
-      <td><button (click)="edit(row._id)">Edit</button></td> 
-      <td><button (click)="delete(row._id)">Delete</button></td>  
+    <tr *ngFor="let row of listArtist; let i = index">
+      <th scope="row">{{i+1}}</th> 
+      <td>
+        <div class="boxTile">
+            <div class="square" style="cursor: pointer;"> 
+                <img height="64" width="64" [src]="app.api()+row.cover.path">
+            </div>
+        </div>
+    </td>
+    <td>{{row.music}}</td> 
+    <td>{{row.artist}}</td>   
+    <td><button (click)="delete(row._id)">Delete</button></td>  
     </tr> 
   </tbody>
 </table>  
-
-
-<div class="col-xs-2">
-    <select class="form-control input-small" [(ngModel)]="status">
-      <option *ngFor="let row of listStatus" value="{{row._id}}">{{row.name}}</option> 
-    </select> 
-</div>
-
-<div class="col-xs-2">
-    <input placeholder="Last week" type="text" class="form-control"  id="pwd" [(ngModel)]="lastweek">
-</div>
-
-<div class="col-xs-2">
-    <input placeholder="On Chat" type="text" class="form-control"  id="pwd" [(ngModel)]="onchat">
-</div>
-
-<div class="col-xs-2">
-    <input placeholder="Lebel" type="text" class="form-control"  id="pwd" [(ngModel)]="lebel">
-</div>
-
-<div class="col-xs-2">
-    <input placeholder="Music" type="text" class="form-control"  id="pwd" [(ngModel)]="music">
-</div>
-
-<div class="col-xs-2">
+ 
+<!-- Insert Music -->
+<div class="form-group col-xs-4">
     <input placeholder="Artist" type="text" class="form-control"  id="pwd" [(ngModel)]="artist">
 </div>
 
-<div class="col-xs-2">
-    <input placeholder="Peak" type="text" class="form-control"  id="pwd" [(ngModel)]="peak">
+<div class="form-group col-xs-4">
+    <input placeholder="Music" type="text" class="form-control"  id="pwd" [(ngModel)]="music">
 </div>
 
-<div class="col-xs-3">
-    <input placeholder="Date of Week" type="date" class="form-control"  id="pwd" [(ngModel)]="dateofweek">
+<div class="form-group col-xs-12">
+    <div class="button-container" >
+        <div *ngIf="previewData && !resp">
+            <img [src]="previewData" height="84" width="84"> 
+        </div> 
+        <label class="upload-button is-pulled-left" style="cursor:pointer">
+            <input type="file" class="hidden" ngFileSelect
+                [options]="options" 
+                [events]="inputUploadEvents"
+                (onUpload)="handleUpload($event)"
+                (onPreviewData)="handlePreviewData($event)"
+                (beforeUpload)="beforeUpload($event)">
+                ==> Plese Select Partner Upload <==
+        </label>
+    </div> 
+    <p>
+    Allowed extensions: <code><b>.jpg</b>, <b>.png</b></code>
+    </p>
 </div>
 
 <div class="col-xs-3">
   <span>{{response}}</span>
-  <button type="button" class="btn btn-primary btn-sm" (click)="submit()" *ngIf="_id == null">Submit</button>
-  <button type="button" class="btn btn-primary btn-sm" (click)="update()" *ngIf="_id != null">Update</button>
+  <button type="button" class="btn btn-primary btn-sm" (click)="submit()">Submit</button> 
 </div>
+
+<div class="form-group col-xs-12"> 
+    <h1>List City 30 Hitz</h1>
+    <table class="table">
+        <thead class="thead-inverse">
+            <tr>
+            <th>#</th>
+            <th>Date</th>    
+            <th>Link</th>    
+            <th>Edit</th>    
+            <th>Delete</th>    
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of listTitle; let i = index">
+                <th scope="row">{{i+1}}</th>  
+                <td>{{app.convertTime(row.date) | date: fullDate}}</td>     
+                <td><button routerLink="/listhits/{{row._id}}">Link</button></td>     
+                <td><button (click)="editTitle(row._id)">Edit</button></td>     
+                <td><button (click)="deleteTitle(row._id)">Delete</button></td>     
+            </tr> 
+        </tbody>
+    </table>  
+
+    <!-- Insert Music --> 
+    <div class="form-group col-xs-4">
+        <input placeholder="Artist" type="date" class="form-control"  id="pwd" [(ngModel)]="datetitle">
+    </div>
+
+    <div class="form-group col-xs-4">
+        <button type="button" class="btn btn-primary btn-sm" (click)="submitTitle()" *ngIf="_id == null">Submit</button> 
+        <button type="button" class="btn btn-primary btn-sm" (click)="updateTitle()" *ngIf="_id != null">Update</button> 
+    </div>
+
+</div>   
