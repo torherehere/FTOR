@@ -1,8 +1,8 @@
 <article class="col-sm-6 col-md-4">  
-    <div class="boxTile" *ngFor="let row of listDataAds">
+    <div class="boxTile" *ngFor="let row of listDataPartner">
         <div class="square" style="cursor: pointer;"> 
             <img [src]="app.api()+row.photo.path" width="64" height="64" (click)="linkTap(row.link)">
-            <button (click)="delAds(row._id)">delete</button>
+            <button (click)="delPartner(row._id)">delete</button>
         </div>
     </div> 
 </article>
@@ -21,7 +21,7 @@
           (onUpload)="handleUpload($event)"
           (onPreviewData)="handlePreviewData($event)"
           (beforeUpload)="beforeUpload($event)">
-          ==> Plese Select Ads Upload <==
+          ==> Plese Select Partner Upload <==
   </label>
 </div>
 <div *ngIf="previewData && !resp">

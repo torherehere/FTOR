@@ -6,16 +6,16 @@ import { NgUploaderOptions, UploadedFile } from 'ngx-uploader';
 import swal from 'sweetalert2'
 
 @Component({
-    selector: 'ads',
-    templateUrl: './ads.html', 
+    selector: 'partner',
+    templateUrl: './partner.html', 
 })
 
-export class Ads implements OnInit {
+export class Partner implements OnInit {
     
     app = new Appfn();
     response: any;
     link: any;
-    listDataAds: any;
+    listDataPartner: any;
 
     // option upload
     options: NgUploaderOptions;  
@@ -26,7 +26,7 @@ export class Ads implements OnInit {
 
     constructor(private setsv: SettopbarService, @Inject(NgZone) private zone: NgZone, private cityradio: CityRadioSV){
         this.options = new NgUploaderOptions({
-            url: this.app.api()+'cityradio/uploadAds',
+            url: this.app.api()+'cityradio/uploadPartner',
             filterExtensions: true,
             allowedExtensions: ['jpg', 'png'],
             data: { },
@@ -42,13 +42,13 @@ export class Ads implements OnInit {
     }
 
     ngOnInit() {
-        this.setsv.settitle("Ads");
-        this.getDataAds();
+        this.setsv.settitle("Partner");
+        this.getDataPartner();
     }
 
-    getDataAds(){
-        this.cityradio.getDataAds().subscribe(data=>{
-            this.listDataAds = data;
+    getDataPartner(){
+        this.cityradio.getDataPartner().subscribe(data=>{
+            this.listDataPartner = data;
         })
     }
 
@@ -74,9 +74,9 @@ export class Ads implements OnInit {
                         date: this.app.getTime(),
                     } 
 
-                    this.cityradio.updateDataAds(this.resp._id, dataArr).subscribe(data=>{
+                    this.cityradio.updateDataPartner(this.resp._id, dataArr).subscribe(data=>{
                         this.clearData(); 
-                        this.getDataAds();
+                        this.getDataPartner();
                     })
                 }
             });
@@ -103,7 +103,7 @@ export class Ads implements OnInit {
         var newWindow = window.open(link); 
     }
 
-    delAds(_id: any){
+    delPartner(_id: any){
         swal({
             title: 'Are you sure?',
             text: 'You will not be able to recover this imaginary file!',
@@ -114,8 +114,8 @@ export class Ads implements OnInit {
 
         }).then(()=>{
             swal('Deleted!', 'Your imaginary file has been deleted.', 'success')
-            this.cityradio.delAds(_id).subscribe(data=>{
-                this.getDataAds();
+            this.cityradio.delPartner(_id).subscribe(data=>{
+                this.getDataPartner();
             })
 
         }, (dismiss)=>{
