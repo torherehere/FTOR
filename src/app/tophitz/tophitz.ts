@@ -1,3 +1,7 @@
+import { CloneMusic } from './clonemusic/clonemusic';
+import { ApiSV } from './../api/api';
+import { EditMusic } from './editmusic/editmusic';
+import { GobalviewService } from './../../../service/gobalview.service';
 import { HitsSV } from './../api/hits';
 import { NgUploaderOptions, UploadedFile } from 'ngx-uploader'; 
 import { Appfn } from './../appfn';
@@ -28,7 +32,7 @@ export class Tophitz implements OnInit {
     inputUploadEvents: EventEmitter<string>;
     resp: any; 
 
-    constructor(private setsv: SettopbarService, private hits: HitsSV, @Inject(NgZone) private zone: NgZone){
+    constructor(private setsv: SettopbarService, private hits: HitsSV, @Inject(NgZone) private zone: NgZone, private gobalview: GobalviewService, private api: ApiSV){
         this.options = new NgUploaderOptions({
             url: this.app.api()+'hits/uploadArtist',
             filterExtensions: true,
@@ -49,6 +53,14 @@ export class Tophitz implements OnInit {
         this.setsv.settitle("Tophitz"); 
         this.getAllArtist();
         this.getAllTitle(); 
+
+        this.api.active.subscribe(data=>{
+            this.getAllArtist();  
+        })
+
+        this.api.activeTitle.subscribe(data=>{
+            this.getAllTitle(); 
+        });
     } 
  
     submit(){    
@@ -133,11 +145,13 @@ export class Tophitz implements OnInit {
     }
 
     submitTitle(){
-        var dd = this.app.changeDateTimeStamp(this.datetitle); 
-        this.hits.addTitleHits(dd).subscribe(data=>{
-            this.getAllTitle();
-            this.clearData();
-        }) 
+        if(!this.app.isEmpty(this.datetitle)){
+            var dd = this.app.changeDateTimeStamp(this.datetitle); 
+            this.hits.addTitleHits(dd).subscribe(data=>{
+                this.getAllTitle();
+                this.clearData();
+            }) 
+        } 
     }
 
     getAllTitle(){
@@ -172,20 +186,33 @@ export class Tophitz implements OnInit {
 
     editTitle(_id: any){
         this.hits.getTitle(_id).subscribe(data=>{   
-            this._id = data._id;
-            this.datetitle = data.date
+            this._id = data._id; 
+            this.datetitle = this.app.changeDateYMD(data.date);  
         })
     } 
 
-    updateTitle(){
-        var dataArr = {
-            date: this.app.changeDateTimeStamp(this.datetitle)
-        } 
+    updateTitle(){ 
+        if(!this.app.isEmpty(this.datetitle)){
+            var dataArr = {
+                date: this.app.changeDateTimeStamp(this.datetitle)
+            } 
 
-        this.hits.updateTitle(this._id, dataArr).subscribe(data=>{
-            this.getAllTitle();
-            this.clearData();
-        })
+            this.hits.updateTitle(this._id, dataArr).subscribe(data=>{
+                this.getAllTitle();
+                this.clearData();
+            })
+        } 
+    }
+
+    openModal(_id: any){
+        let tview = this.gobalview.createFactor(EditMusic);
+        this.gobalview.startGobalView(tview, _id) 
+    }
+
+    clone(_id: any){
+        let tview = this.gobalview.createFactor(CloneMusic);
+        this.gobalview.startGobalView(tview, _id) 
+        
     }
 
 }

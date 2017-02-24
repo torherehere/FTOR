@@ -32,7 +32,7 @@ export class JobinfoComponent implements OnInit {
             this.jobTitle = data.job_title;
             this.saraly = data.saraly;
             this.salaryTerm = data.saraly_term;
-            this.dateOfHire = data.dateOfHire; //'2011-08-19'
+            this.dateOfHire = this.app.changeDateYMD(data.dateOfHire); //'2011-08-19'
 
         })
     }

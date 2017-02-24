@@ -1,4 +1,3 @@
- 
 <div class="form-group col-xs-2">
     <select class="form-control input-small" [(ngModel)]="status">
       <option *ngFor="let row of listStatus" value="{{row._id}}">{{row.name}}</option> 
@@ -18,7 +17,7 @@
 </div> 
 
 <div class="form-group col-xs-6">
-    <typeahead 
+    <typeahead  
         [list]="listArtist"
         [searchProperty]="'music'" [displayProperty]="'full'"
         [maxSuggestions]="10"
@@ -33,4 +32,36 @@
   <button type="button" class="btn btn-primary btn-sm" (click)="update()" *ngIf="_id != null">Update</button>
 </div>
  
-
+<div class="form-group col-xs-12"> 
+    <h1>City 30 Hitz - {{title | date: fullDate}}</h1>
+    <table class="table">
+        <thead class="thead-inverse">
+            <tr>
+            <th>#</th>
+            <th>Status</th>    
+            <th>Last week</th>    
+            <th>On chart</th>    
+            <th>Lebel</th>    
+            <th>Music</th>    
+            <th>Artist</th>    
+            <th>Peak</th>    
+            <th>Edit</th>    
+            <th>Delete</th>    
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of listHits">
+                <th scope="row">{{row.index}}</th>   
+                <td><span class="{{row.status.class}}" aria-hidden="true"></span></td>     
+                <td>{{row.lastweek}}</td>     
+                <td>{{row.onchat}}</td>     
+                <td><img height="64" width="64" [src]="app.api()+row.artist_id.cover.path"></td>     
+                <td>{{row.artist_id.music}}</td>     
+                <td>{{row.artist_id.artist}}</td>     
+                <td>{{row.peak}}</td>         
+                <td><button (click)="openModal(row._id)">Edit</button></td>     
+                <td><button (click)="delete(row._id)">Delete</button></td>     
+            </tr> 
+        </tbody>
+    </table>  
+</div> 

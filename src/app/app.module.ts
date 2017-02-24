@@ -1,3 +1,7 @@
+import { CloneMusic } from './tophitz/clonemusic/clonemusic';
+import { EditMusic } from './tophitz/editmusic/editmusic';
+import { EditListHits } from './listhits/editlisthits/editlisthits';
+import { ApiSV } from './api/api';
 import { Listhits } from './listhits/listhits';
 import { HitsSV } from './api/hits';
 import { Ads } from './ads/ads';
@@ -120,7 +124,10 @@ let routing = [
     Partner,
     Ads,
     Typeahead,
-    Listhits
+    Listhits,
+    EditListHits,
+    EditMusic,
+    CloneMusic
   ],
   imports: [
     RouterModule.forRoot(routing),
@@ -146,11 +153,15 @@ let routing = [
     CityRadioSV,
     DjTimeSV,
     HitsSV,
+    ApiSV,
   ],
   entryComponents: [
     AddmembersComponent,
     SendinactiveComponent,
-    EditaVatar
+    EditaVatar,
+    EditListHits,
+    EditMusic,
+    CloneMusic
   ],
   bootstrap: [AppComponent]
 })

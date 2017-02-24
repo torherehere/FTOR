@@ -1,4 +1,4 @@
-<h1>List Music</h1>
+<h1>List Music ข้อมูลพื้นฐาน</h1>
 <table class="table">
   <thead class="thead-inverse">
     <tr>
@@ -6,6 +6,7 @@
       <th>Cover</th>  
       <th>Music</th>  
       <th>Artist</th>   
+      <th>Edit</th>  
       <th>Delete</th>  
     </tr>
   </thead>
@@ -14,13 +15,14 @@
       <th scope="row">{{i+1}}</th> 
       <td>
         <div class="boxTile">
-            <div class="square" style="cursor: pointer;"> 
+            <div class="square"> 
                 <img height="64" width="64" [src]="app.api()+row.cover.path">
             </div>
         </div>
     </td>
     <td>{{row.music}}</td> 
     <td>{{row.artist}}</td>   
+    <td><button (click)="openModal(row._id)">Edit</button></td>  
     <td><button (click)="delete(row._id)">Delete</button></td>  
     </tr> 
   </tbody>
@@ -28,12 +30,12 @@
  
 <!-- Insert Music -->
 <div class="form-group col-xs-4">
-    <input placeholder="Artist" type="text" class="form-control"  id="pwd" [(ngModel)]="artist">
+    <input placeholder="Music" type="text" class="form-control"  id="pwd" [(ngModel)]="music">
 </div>
 
 <div class="form-group col-xs-4">
-    <input placeholder="Music" type="text" class="form-control"  id="pwd" [(ngModel)]="music">
-</div>
+    <input placeholder="Artist" type="text" class="form-control"  id="pwd" [(ngModel)]="artist">
+</div> 
 
 <div class="form-group col-xs-12">
     <div class="button-container" >
@@ -47,7 +49,7 @@
                 (onUpload)="handleUpload($event)"
                 (onPreviewData)="handlePreviewData($event)"
                 (beforeUpload)="beforeUpload($event)">
-                ==> Plese Select Partner Upload <==
+                ==> Plese Select Cover Upload <==
         </label>
     </div> 
     <p>
@@ -70,6 +72,7 @@
             <th>Link</th>    
             <th>Edit</th>    
             <th>Delete</th>    
+            <th>Clone</th>    
             </tr>
         </thead>
         <tbody>
@@ -79,6 +82,7 @@
                 <td><button routerLink="/listhits/{{row._id}}">Link</button></td>     
                 <td><button (click)="editTitle(row._id)">Edit</button></td>     
                 <td><button (click)="deleteTitle(row._id)">Delete</button></td>     
+                <td><button (click)="clone(row._id)">Clone</button></td>     
             </tr> 
         </tbody>
     </table>  

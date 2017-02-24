@@ -53,5 +53,5 @@ export class HitsSV {
 
     getDataHitsByDateID(title_id: any){ 
         return this.http.post(this.app.api()+'hits/getDataHitsByDateID', this.app.body({title_id: title_id}),{headers:this.headers}).map(res => res.json());
-    }
+    } 
 }
